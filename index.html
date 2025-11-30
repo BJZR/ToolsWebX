@@ -3,237 +3,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolsWebX – Herramientas Web Útiles</title>
 <meta name="google-site-verification" content="gZop1TgPprf9xAq-vtz9GSIP65yeqE3-pbXyoUNEbfE" />
-<title>Stools – Herramientas Web</title>
+<meta name="description" content="ToolsWebX es una plataforma minimalista que reúne las mejores herramientas web clasificadas por tipo. Encuentra utilidades para PDF, imágenes, diseño, IA, productividad y más.">
 
-<meta name="description" content="Stools es una colección minimalista de herramientas web útiles. Encuentra utilidades para PDF, imágenes, diseño, IA, productividad y más.">
+<meta property="og:title" content="ToolsWebX – Herramientas Web Útiles">
+<meta property="og:description" content="Colección minimalista y rápida de herramientas web listas para usar.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bjzr.github.io/ToolsWebX/">
+<meta property="og:image" content="https://via.placeholder.com/600x315">
 
 <style>
-    /* ========== VARIABLES DE TEMA ========== */
-    :root {
-        --bg: #fafafa;
-        --text: #222;
-        --card-bg: #fff;
-        --card-border: #e8e8e8;
-        --button-bg: #222;
-        --button-text: #fff;
-        --search-bg: #fff;
-    }
+:root {
+    --bg: #fafafa;
+    --text: #222;
+    --card-bg: #fff;
+    --card-border: #e8e8e8;
+    --button-bg: #222;
+    --button-text: #fff;
+    --search-bg: #fff;
+}
 
-    [data-theme="dark"] {
-        --bg: #121212;
-        --text: #eaeaea;
-        --card-bg: #1d1d1d;
-        --card-border: #333;
-        --button-bg: #eaeaea;
-        --button-text: #000;
-        --search-bg: #1d1d1d;
-    }
+[data-theme="dark"] {
+    --bg: #121212;
+    --text: #eaeaea;
+    --card-bg: #1d1d1d;
+    --card-border: #333;
+    --button-bg: #eaeaea;
+    --button-text: #000;
+    --search-bg: #1d1d1d;
+}
 
-    body {
-        margin: 0;
-        font-family: system-ui, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        transition: .2s;
-    }
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: .2s;
+}
 
-    /* ========== BARRA SUPERIOR ========== */
+/* =================== BARRA SUPERIOR =================== */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 12px 20px;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* CONTENEDOR FLEX CENTRAL PARA LA BÚSQUEDA */
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.search-box {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 8px 0 0 8px;
+    border: 1px solid var(--card-border);
+    border-right: none;
+    background: var(--search-bg);
+    color: var(--text);
+}
+
+.search-box button {
+    padding: 10px 16px;
+    border-radius: 0 8px 8px 0;
+    border: 1px solid var(--card-border);
+    border-left: none;
+    background: var(--button-bg);
+    color: var(--button-text);
+    cursor: pointer;
+}
+
+.theme-button {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: var(--button-bg);
+    color: var(--button-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+/* =================== CONTENIDO =================== */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+    margin-top: 90px;
+}
+
+.tool {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    transition: .2s;
+}
+
+.tool:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.tool img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #ccc;
+}
+
+.info h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.info p {
+    margin: 5px 0 10px 0;
+    opacity: .8;
+}
+
+.info a {
+    text-decoration: none;
+    padding: 6px 12px;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border-radius: 6px;
+}
+
+@media (max-width: 700px) {
     .topbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 20px;
-        background: var(--card-bg);
-        border-bottom: 1px solid var(--card-border);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
-
-    /* BUSCADOR */
-    .search-area {
-        display: flex;
+        flex-direction: column;
         gap: 10px;
-        width: 70%;
-        max-width: 500px;
-    }
-
-    .search-area input {
-        flex: 1;
-        padding: 10px;
-        border-radius: 8px;
-        border: 1px solid var(--card-border);
-        background: var(--search-bg);
-        color: var(--text);
-    }
-
-    .search-area button {
-        padding: 10px 14px;
-        background: var(--button-bg);
-        color: var(--button-text);
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-    }
-
-    /* BOTÓN DE TEMA */
-    .theme-button {
-        width: 42px;
-        height: 42px;
-        border-radius: 8px;
-        background: var(--button-bg);
-        color: var(--button-text);
-        display: flex;
         align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        border: none;
-        font-size: 20px;
+        padding-bottom: 15px;
     }
 
-    /* ========== CONTENIDO ========== */
+    .search-wrapper {
+        width: 100%;
+        order: 2;
+    }
+    
+    .theme-button {
+        order: 3;
+    }
+
     .container {
-        max-width: 900px;
-        margin: 30px auto;
-        padding: 0 20px;
+        margin-top: 140px;
     }
 
     .tool {
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 20px;
-        display: flex;
-        gap: 20px;
-        align-items: center;
-        transition: .2s;
+        flex-direction: column;
+        text-align: center;
     }
-
-    .tool:hover {
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .tool img {
-        width: 80px;
-        height: 80px;
-        border-radius: 10px;
-        object-fit: cover;
-        background: #ccc;
-    }
-
-    .info h2 {
-        margin: 0;
-        font-size: 1.2rem;
-    }
-
-    .info p {
-        margin: 5px 0 10px 0;
-        opacity: .8;
-    }
-
-    .info a {
-        text-decoration: none;
-        padding: 6px 12px;
-        background: var(--button-bg);
-        color: var(--button-text);
-        border-radius: 6px;
-    }
-
-    @media (max-width: 600px) {
-        .topbar { flex-direction: column; gap: 10px; }
-        .search-area { width: 100%; }
-        .tool { flex-direction: column; text-align: center; }
-    }
+}
 </style>
 </head>
 <body>
 
-<!-- ========== BARRA SUPERIOR ========== -->
 <div class="topbar">
-    <!-- BÚSQUEDA -->
-    <div class="search-area">
-        <input id="searchInput" type="text" placeholder="Buscar por nombre o tipo...">
-        <button onclick="applySearch()">OK</button>
+    <div class="logo">ToolsWebX</div>
+
+    <div class="search-wrapper">
+        <div class="search-box">
+            <input id="searchInput" type="text" placeholder="Buscar herramientas por nombre o tipo...">
+            <button onclick="applySearch()">Buscar</button>
+        </div>
     </div>
 
-    <!-- BOTÓN DE TEMA -->
     <button class="theme-button" id="themeButton">☀️</button>
 </div>
 
-<!-- ========== CONTENIDO ========== -->
 <div class="container" id="toolList"></div>
 
 <script>
-/* ===========================================================
-   LISTA DE HERRAMIENTAS (EDITABLE)
-   Cada herramienta tiene: nombre, descripción, enlace, tipo
-=========================================================== */
 const tools = [
-    {
-        name: "TinyWow",
-        type: "PDF",
-        desc: "Herramientas gratis para PDF, imágenes y archivos.",
-        url: "https://tinywow.com",
-        img: "https://via.placeholder.com/150"
-    },
-    {
-        name: "10015.io",
-        type: "Multitool",
-        desc: "Más de 100 herramientas de diseño, texto y multimedia.",
-        url: "https://10015.io",
-        img: "https://via.placeholder.com/150"
-    },
-    {
-        name: "ILovePDF",
-        type: "PDF",
-        desc: "Convertir, unir, comprimir y editar archivos PDF.",
-        url: "https://ilovepdf.com",
-        img: "https://via.placeholder.com/150"
-    },
-    {
-        name: "Remove.bg",
-        type: "Imagen",
-        desc: "Elimina el fondo de imágenes automáticamente.",
-        url: "https://remove.bg",
-        img: "https://via.placeholder.com/150"
-    },
-    {
-        name: "Canva",
-        type: "Diseño",
-        desc: "Editor online de diseño fácil y con plantillas.",
-        url: "https://canva.com",
-        img: "https://via.placeholder.com/150"
-    },
-    {
-        name: "Photopea",
-        type: "Imagen",
-        desc: "Editor online similar a Photoshop.",
-        url: "https://photopea.com",
-        img: "https://via.placeholder.com/150"
-    }
+    { name: "TinyWow", type: "PDF", desc: "Herramientas para PDF e imágenes.", url: "https://tinywow.com", img: "https://via.placeholder.com/150" },
+    { name: "10015.io", type: "Multitool", desc: "Más de 100 herramientas online.", url: "https://10015.io", img: "https://via.placeholder.com/150" },
+    { name: "ILovePDF", type: "PDF", desc: "Utilidades completas para PDF.", url: "https://ilovepdf.com", img: "https://via.placeholder.com/150" },
+    { name: "Remove.bg", type: "Imagen", desc: "Elimina fondos de imágenes.", url: "https://remove.bg", img: "https://via.placeholder.com/150" },
+    { name: "Canva", type: "Diseño", desc: "Crea diseños fácilmente.", url: "https://canva.com", img: "https://via.placeholder.com/150" },
+    { name: "Photopea", type: "Imagen", desc: "Editor estilo Photoshop online.", url: "https://photopea.com", img: "https://via.placeholder.com/150" }
 ];
 
-/* ===========================================================
-   GENERAR HTML
-=========================================================== */
 const list = document.getElementById("toolList");
 
 function renderTools(filter = "") {
     list.innerHTML = "";
-
     const f = filter.toLowerCase();
-
     const filtered = tools.filter(t =>
         t.name.toLowerCase().includes(f) ||
         t.type.toLowerCase().includes(f)
     );
-
     filtered.forEach(t => {
         list.innerHTML += `
             <div class="tool">
-                <img src="${t.img}" alt="Vista previa ${t.name}">
+                <img src="${t.img}" alt="Vista previa de ${t.name}">
                 <div class="info">
                     <h2>${t.name}</h2>
                     <p>${t.desc}</p>
@@ -247,29 +243,21 @@ function renderTools(filter = "") {
 
 renderTools();
 
-/* ===========================================================
-   BUSCADOR
-=========================================================== */
 function applySearch() {
     const value = document.getElementById("searchInput").value;
     renderTools(value);
 }
 
-/* ENTER para buscar */
 document.getElementById("searchInput").addEventListener("keydown", e => {
     if (e.key === "Enter") applySearch();
 });
 
-/* ===========================================================
-   TEMA (CLARO / OSCURO / SISTEMA)
-=========================================================== */
 const themeButton = document.getElementById("themeButton");
 
 function setTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
-
-    themeButton.textContent = 
+    themeButton.textContent =
         theme === "dark" ? "🌙" :
         theme === "light" ? "☀️" : "🖥️";
 }
@@ -282,7 +270,6 @@ themeButton.onclick = () => {
     if (savedTheme === "light") savedTheme = "dark";
     else if (savedTheme === "dark") savedTheme = "system";
     else savedTheme = "light";
-
     setTheme(savedTheme);
     applySystemTheme();
 };
@@ -293,9 +280,7 @@ function applySystemTheme() {
         document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
     }
 }
-
 </script>
 
 </body>
 </html>
-
